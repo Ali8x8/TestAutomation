@@ -159,7 +159,7 @@
                     <version>3.0.0-M5</version> <!-- Use the latest version -->
                     <configuration>
                         <includes>
-                            <include>**/Automation1/Automation1/AppTest.class</include>
+                            <include>**/Runner.class</include>
                         </includes>
                     </configuration>
                 </plugin>
