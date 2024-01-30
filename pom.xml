@@ -143,6 +143,7 @@
         </dependencyManagement>
 
         <build>
+
             <plugins>
 
                 <plugin>
@@ -157,7 +158,12 @@
                                 <goal>test</goal>
                             </goals>
                             <configuration>
-                                <outputEncoding>UTF-8</outputEncoding>
+
+
+
+
+
+
                                 <parallel>classes</parallel>
                                 <perCoreThreadCount>true</perCoreThreadCount>
                                 <threadCountClasses>10</threadCountClasses>
@@ -174,5 +180,16 @@
             </plugins>
 
         </build>
+
+    <profiles>
+        <profile>
+            <id>cucumber-tests</id>
+            <properties>
+                <cucumber.options>--glue src/test/resources</cucumber.options>
+            </properties>
+
+            . . .
+        </profile>
+    </profiles>
 
     </project>
