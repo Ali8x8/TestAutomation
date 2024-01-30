@@ -181,15 +181,15 @@
 
         </build>
 
-    <profiles>
-        <profile>
-            <id>cucumber-tests</id>
-            <properties>
-                <cucumber.options>--glue src/test/resources</cucumber.options>
-            </properties>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>cucumber-tests</id>-->
+<!--            <properties>-->
+<!--                <cucumber.options>&#45;&#45;glue src/test/resources</cucumber.options>-->
+<!--            </properties>-->
 
-            . . .
-        </profile>
-    </profiles>
+<!--            . . .-->
+<!--        </profile>-->
+<!--    </profiles>-->
 
     </project>
