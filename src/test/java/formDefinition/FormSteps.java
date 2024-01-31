@@ -2,9 +2,9 @@ package formDefinition;
 
 import java.io.IOException;
 
+import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.Test;
 
 import Req.REQPOM;
 import Utilities.BaseClass;
@@ -26,6 +26,7 @@ public class FormSteps extends BaseClass {
 	}
 
 	//-----Start of  RAQ FORM Step method Definition123-------
+	@Test
 	@When("Open URL for RAQ Form {string}")
 	public void open_raq_url(String url) throws InterruptedException {
 		driver.get(url);
