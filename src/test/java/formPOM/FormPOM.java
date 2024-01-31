@@ -33,12 +33,13 @@ import io.restassured.response.Response;
 import junit.framework.Assert;
 @Test
 public class FormPOM {
-	FirefoxDriver driver;
+	//FirefoxDriver driver;
+	WebDriver driver;
 	//ChromeDriver driver;
 	BaseClass baseclass;
 	ChromeOptions option;
 
-	public FormPOM(FirefoxDriver driver) {
+	public FormPOM(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		driver.manage().window().maximize();
