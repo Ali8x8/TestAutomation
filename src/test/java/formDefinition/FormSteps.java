@@ -3,6 +3,7 @@ package formDefinition;
 import java.io.IOException;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
@@ -20,9 +21,14 @@ public class FormSteps extends BaseClass {
 	@Given("Launch the browser")
 	public void launch_the_browser() {
 
-		WebDriverManager.firefoxdriver().setup();
+		//WebDriverManager.firefoxdriver().setup();
 		//driver = new ChromeDriver();
-		driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
+
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		driver=new ChromeDriver(options);
+
 	}
 
 	//-----Start of  RAQ FORM Step method Definition-------
@@ -123,7 +129,7 @@ public class FormSteps extends BaseClass {
 		form.generateReqErrorForNameAndPhone();
 		Thread.sleep(2000);
 		form.errorPresenceForSecondStepper();
-		//form.reqCTA.click();//asdgfasdfasdf
+		//form.reqCTA.click();
 		Thread.sleep(2000);
 	}
 	@When("Verify single space and multiple space for First Name Last Name and Phone fields")
