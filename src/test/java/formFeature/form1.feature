@@ -1,5 +1,6 @@
 Feature: All Form Submission
 
+  @ValidationTest
   Scenario: Verify All the required message
     Given Launch the browser
     When Open URL for RAQ Form "https://8x8-preview.netlify.app/"

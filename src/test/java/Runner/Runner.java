@@ -13,11 +13,14 @@ import io.cucumber.junit.CucumberOptions;
 "src\\test\\java\\FEATURE\\integration.feature","src\\test\\java\\FEATURE\\contactcenter.feature",
 "src\\test\\java\\FEATURE\\api.feature","src\\test\\java\\FEATURE\\download.feature"},*/
 glue="formDefinition",
+ tags = "@ValidationTest",
 dryRun = false,
 monochrome = true,
 //plugin = {"pretty" , "html: test-output"},
+
 plugin = {"pretty", "json:target/cucumber-reports/cucumber.json",
-		"html:target/cucumber-reports/cucumber.html"}
+		"html:target/cucumber-reports/cucumber.html", }
+
 		)
 public class Runner {
 
