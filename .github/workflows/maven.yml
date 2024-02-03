@@ -6,8 +6,16 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 #############################
+## New yml File Created
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
-name: Cucumber Selenium CI
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven
 
 on:
   push:
@@ -16,30 +24,62 @@ on:
     branches: [ "TestAutomation" ]
 
 jobs:
-  test:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v3
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
           java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
 
-      - name: Cache Maven dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+##End of New created YML File
 
-      - name: Build and run Cucumber tests
-        run: echo "Hello world"
+
+
+
+
+
+
+#name: Cucumber Selenium CI
+#
+#on:
+#  push:
+#    branches: [ "TestAutomation" ]
+#  pull_request:
+#    branches: [ "TestAutomation" ]
+#
+#jobs:
+#  test:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Set up JDK
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: 'adopt'
+#          java-version: '21'
+#
+#      - name: Cache Maven dependencies
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            ~/.m2/repository
+#          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            ${{ runner.os }}-maven-
+#
+#      - name: Build and run Cucumber tests
+#        run: echo "Hello world"
 
 
 ###############################
@@ -67,7 +107,7 @@ jobs:
 #        cache: maven
 #    - name: Build with Maven
 #      run: mvn clean test
-    
+
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
   #  - name: Update dependency graph

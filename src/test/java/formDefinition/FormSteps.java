@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.Test;
 
 import Req.REQPOM;
@@ -21,13 +22,16 @@ public class FormSteps extends BaseClass {
 	@Given("Launch the browser")
 	public void launch_the_browser() {
 
-		//WebDriverManager.firefoxdriver().setup();
+		WebDriverManager.firefoxdriver().setup();
 		//driver = new ChromeDriver();
 		//driver = new FirefoxDriver();
 
-		ChromeOptions options = new ChromeOptions();
+		FirefoxOptions options=new FirefoxOptions();
 		options.addArguments("--headless");
-		driver=new ChromeDriver(options);
+		driver=new FirefoxDriver(options);
+		//ChromeOptions options = new ChromeOptions();
+		//options.addArguments("--headless");
+		//driver=new ChromeDriver(options);
 
 	}
 
