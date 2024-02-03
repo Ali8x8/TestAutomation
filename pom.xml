@@ -153,16 +153,16 @@
                         <target>1.8</target>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version> <!-- Use the latest version -->
-                    <configuration>
-                        <includes>
-                            <include>**/Runner*.java</include>
-                        </includes>
-                    </configuration>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                    <version>3.0.0-M5</version> &lt;!&ndash; Use the latest version &ndash;&gt;-->
+<!--                    <configuration>-->
+<!--                        <includes>-->
+<!--                            <include>**/Runner*.java</include>-->
+<!--                        </includes>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
             </plugins>
 
         </build>
