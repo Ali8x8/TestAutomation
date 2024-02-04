@@ -93,11 +93,7 @@
             </dependency>
 
 
-            <dependency>
-                <groupId>info.cukes</groupId>
-                <artifactId>cucumber-junit</artifactId>
-                <version>1.2.5</version>
-            </dependency>
+
             <!-- https://mvnrepository.com/artifact/junit/junit -->
             <dependency>
                 <groupId>junit</groupId>
@@ -177,7 +173,7 @@
                     <version>3.0.0-M5</version> <!-- Use the latest version -->
                     <configuration>
                         <includes>
-                            <include>**/Runner*.java</include>
+                            <include>**/Runner.Runner.java</include>
                         </includes>
                     </configuration>
                 </plugin>
