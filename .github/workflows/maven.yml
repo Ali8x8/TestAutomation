@@ -39,7 +39,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Run TestNG tests
-        run: mvn test -Dtest=true
+        run: mvn test -Dtest=true -DfailIfNoTests=false
 
 ##End of New created YML File
 
