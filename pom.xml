@@ -149,35 +149,76 @@
                     <artifactId>guava</artifactId>
                     <version>31.0.1-jre</version>
                 </dependency>
+
+                <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+                <dependency>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                    <version>1.18.30</version>
+                    <scope>provided</scope>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+
+
             </dependencies>
         </dependencyManagement>
 
-        <build>
-            <plugins>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.18.20.0</version> <!-- Replace with the latest version -->
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- or latest version -->
+                <configuration>
+                    <annotationProcessorPaths>
+                        <!-- Exclude Lombok from annotation processing -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.20</version> <!-- Replace with the Lombok version you're using -->
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+<!--        <build>-->
+<!--            <plugins>-->
+
 <!--                <plugin>-->
 <!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                    <version>3.8.1</version>-->
+<!--                    <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                    <version>3.0.0-M5</version> &lt;!&ndash; Use the latest version &ndash;&gt;-->
 <!--                    <configuration>-->
-<!--                        <source>1.8</source>-->
-<!--                        <target>1.8</target>-->
+<!--                        <includes>-->
+<!--                            <include>**/Runner.Runner.java</include>-->
+<!--                            <testFailureIgnore>false</testFailureIgnore>-->
+<!--                        </includes>-->
 <!--                    </configuration>-->
+
 <!--                </plugin>-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version> <!-- Use the latest version -->
-                    <configuration>
-                        <includes>
-                            <include>**/Runner.Runner.java</include>
-                            <testFailureIgnore>false</testFailureIgnore>
-                        </includes>
-                    </configuration>
 
-                </plugin>
+<!--            </plugins>-->
 
-            </plugins>
-
-        </build>
+<!--        </build>-->
 
     </project>
