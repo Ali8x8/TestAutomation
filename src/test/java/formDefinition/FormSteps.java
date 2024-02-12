@@ -2,7 +2,6 @@ package formDefinition;
 
 import java.io.IOException;
 
-import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,10 +14,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.Test;
 
 public class FormSteps extends BaseClass {
-
 	@Test
+
 	@Given("Launch the browser")
 	public void launch_the_browser() {
 
