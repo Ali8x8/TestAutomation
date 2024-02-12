@@ -39,4 +39,76 @@ jobs:
       - name: Build with Maven
         run: mvn verify test
 
-##End of New created YML Files
+##End of New created YML File
+
+
+
+
+
+
+
+#name: Cucumber Selenium CI
+#
+#on:
+#  push:
+#    branches: [ "TestAutomation" ]
+#  pull_request:
+#    branches: [ "TestAutomation" ]
+#
+#jobs:
+#  test:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Set up JDK
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: 'adopt'
+#          java-version: '21'
+#
+#      - name: Cache Maven dependencies
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            ~/.m2/repository
+#          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            ${{ runner.os }}-maven-
+#
+#      - name: Build and run Cucumber tests
+#        run: echo "Hello world"
+
+
+###############################
+
+#name: Java CI with Maven
+#
+#on:
+#  push:
+#    branches: [ "TestAutomation" ]
+#  pull_request:
+#    branches: [ "TestAutomation" ]
+#
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#    - uses: actions/checkout@v3
+#    - name: Set up JDK 21
+#      uses: actions/setup-java@v3
+#      with:
+#        java-version: '21'
+#        distribution: 'temurin'
+#        cache: maven
+#    - name: Build with Maven
+#      run: mvn clean test
+
+
+    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+  #  - name: Update dependency graph
+    #  uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
