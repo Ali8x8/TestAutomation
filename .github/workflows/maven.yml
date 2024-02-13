@@ -40,8 +40,8 @@ jobs:
 
       - name: Compile and run Selenium tests
         run: |
-          javac -cp ".:./selenium-java.jar" SeleniumTest.java
-          java -cp ".:./selenium-java.jar" SeleniumTest
+          javac -cp ".:./selenium-java.jar" Runner.Runner.java
+          java -cp ".:./selenium-java.jar" Runner
 
 
 #name: Java CI with Maven
