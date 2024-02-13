@@ -17,9 +17,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.Test;
 
 public class FormSteps extends BaseClass {
-	@Test
 
 	@Given("Launch the browser")
+	@Test
 	public void launch_the_browser() {
 
 		WebDriverManager.firefoxdriver().setup();
@@ -37,6 +37,7 @@ public class FormSteps extends BaseClass {
 
 	//-----Start of  RAQ FORM Step method Definition-------
 	@When("Open URL for RAQ Form {string}")
+	@Test
 	public void open_raq_url(String url) throws InterruptedException {
 		driver.get(url);
 		//System.out.println("Given URL--->" + url);
