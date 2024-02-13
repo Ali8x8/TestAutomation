@@ -12,7 +12,7 @@ name: Selenium Tests
 on:
   push:
     branches:
-      - master
+      - TestAutomation
 
 jobs:
   test:
