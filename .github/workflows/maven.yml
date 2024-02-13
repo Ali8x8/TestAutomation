@@ -6,29 +6,65 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+
+name: Selenium Tests
 
 on:
   push:
-    branches: [ "TestAutomation" ]
-  pull_request:
-    branches: [ "TestAutomation" ]
+    branches:
+      - master
 
 jobs:
   test:
-
+    name: Run Selenium Tests
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 21
-        uses: actions/setup-java@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
         with:
-          java-version: '21'
-          distribution: 'temurin'
-          cache: maven
-      - name: Build with Maven
-        run: mvn clean verify -Dtestng.dtd.http=true
+          java-version: '11'  # You can adjust the Java version as needed
+
+      - name: Download ChromeDriver
+        run: |
+          CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+          unzip /tmp/chromedriver.zip -d /tmp
+          chmod +x /tmp/chromedriver
+          sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
+
+      - name: Compile and run Selenium tests
+        run: |
+          javac -cp ".:./selenium-java.jar" SeleniumTest.java
+          java -cp ".:./selenium-java.jar" SeleniumTest
+
+
+#name: Java CI with Maven
+#
+#on:
+#  push:
+#    branches: [ "TestAutomation" ]
+#  pull_request:
+#    branches: [ "TestAutomation" ]
+#
+#jobs:
+#  test:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Set up JDK 21
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: '21'
+#          distribution: 'temurin'
+#          cache: maven
+#      - name: Build with Maven
+#        run: mvn clean verify -Dtestng.dtd.http=true
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       # Comment Adeel Ahmed
