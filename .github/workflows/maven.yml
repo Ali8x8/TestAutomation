@@ -6,67 +6,29 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-
-name: Selenium Tests
+name: Java CI with Maven
 
 on:
   push:
-    branches:
-      - TestAutomation
+    branches: [ "TestAutomation" ]
+  pull_request:
+    branches: [ "TestAutomation" ]
 
 jobs:
   test:
-    name: Run Selenium Tests
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Java
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v3
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
         with:
-          java-version: '21'  # You can adjust the Java version as needed
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
-
-      - name: Download ChromeDriver
-        run: |
-          CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-          unzip /tmp/chromedriver.zip -d /tmp
-          chmod +x /tmp/chromedriver
-          sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
-
-      - name: Compile and run Selenium tests
-        run: |
-          javac -cp ".:./selenium-java.jar" Runner.Runner.java
-          java -cp ".:./selenium-java.jar" Runner
-
-
-#name: Java CI with Maven
-#
-#on:
-#  push:
-#    branches: [ "TestAutomation" ]
-#  pull_request:
-#    branches: [ "TestAutomation" ]
-#
-#jobs:
-#  test:
-#
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Set up JDK 21
-#        uses: actions/setup-java@v3
-#        with:
-#          java-version: '21'
-#          distribution: 'temurin'
-#          cache: maven
-#      - name: Build with Maven
-#        run: mvn clean verify -Dtestng.dtd.http=true
+      - name: Build with Maven
+        run: mvn clean verify -Dtestng.dtd.http=true
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       # Comment Adeel Ahmed
