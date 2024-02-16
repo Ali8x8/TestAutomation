@@ -33,3 +33,16 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean verify
+
+      - name: Generate Cucumber Reports
+        run: |
+         mkdir -p reports
+         npm install -g cucumber-html-reporter
+         cucumber-json-merge src/test/resources/cucumber-reports/*.json > reports/cucumber-report.json
+         cucumber-html-reporter --json reports/cucumber-report.json --output reports/cucumber-report.html
+
+      - name: Publish Cucumber Reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: cucumber-reports
+          path: reports/cucumber-report.html  
