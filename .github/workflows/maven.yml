@@ -38,7 +38,6 @@ jobs:
         run: |
          mkdir -p reports
          npm install -g cucumber-html-reporter
-         cucumber-json-merge src/test/resources/cucumber-reports/*.json > reports/cucumber-report.json
          cucumber-html-reporter --json reports/cucumber-report.json --output reports/cucumber-report.html
 
       - name: Publish Cucumber Reports
