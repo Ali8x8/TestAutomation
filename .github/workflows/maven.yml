@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI with Maven and Cucumber Reports
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      
       - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
@@ -31,17 +31,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Build with Maven
+      - name: Build and test with Maven
         run: mvn clean verify
+
+      - name: Install cucumber-html-reporter
+        run: npm install -g cucumber-html-reporter
 
       - name: Generate Cucumber Reports
         run: |
-         mkdir -p reports
-         npm install -g cucumber-html-reporter
-         cucumber-html-reporter --json reports/cucumber-report.json --output reports/cucumber-report.html
+          mkdir reports
+          cucumber-json-merge src/test/resources/cucumber-reports/*.json > reports/cucumber-report.json
+          cucumber-html-reporter --json reports/cucumber-report.json --output reports/cucumber-report.html
 
       - name: Publish Cucumber Reports
         uses: actions/upload-artifact@v2
         with:
           name: cucumber-reports
-          path: reports/cucumber-report.html  
+          path: reports/cucumber-report.html
