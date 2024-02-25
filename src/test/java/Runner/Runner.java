@@ -23,8 +23,11 @@ monochrome = true,
 //plugin = {"pretty", "json:target/cucumber-reports/cucumber.json",
 //		"html:target/cucumber-reports/cucumber.html", }
 
-		plugin = {"pretty", "json:report/cucumber.json",
-				"html:report/cucumber.html", }
+		//plugin = {"pretty", "json:report/cucumber.json",
+				//"html:report/cucumber.html", }
+
+		 plugin = {"pretty", "json:target/cucumber-reports/cucumber.json",
+		"html:target/cucumber-reports/index.html", }
 
 		)
 public class Runner {
