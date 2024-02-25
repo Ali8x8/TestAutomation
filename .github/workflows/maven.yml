@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - TestAutomation
+  schedule:
+    - cron: '55 17 * * *'  # Schedule the workflow to run at 10:55 PM in Pakistani Standard Time (5:55 PM UTC)    
 
 jobs:
   test:
@@ -14,6 +16,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Delay
+        run: sleep 60  # Delay for 20 minutes (20 minutes * 60 seconds = 1200 seconds)
+    
       - name: Checkout code
         uses: actions/checkout@v3
       
@@ -33,19 +38,14 @@ jobs:
 
       - name: Build and test with Maven
         run: mvn clean verify
+      - name: Deploy Cucumber reports to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/cucumber-reports
 
-#      - name: Install cucumber-html-reporter
-#        run: npm install -g cucumber-html-reporter
-#
-#      - name: Generate Cucumber Reports
-#        run: |
-#          mkdir reports
-#          cucumber-json-merge src/test/resources/cucumber-reports/*.json > reports/cucumber-report.json
-#          cucumber-html-reporter --json reports/cucumber-report.json --output reports/cucumber-report.html
-#
-#      - name: Publish Cucumber Reports
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: cucumber-reports
-#          path: reports/cucumber-report.html
-# Report For Updated
+      - name: Publish HTML reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: cucumber-reports
+          path: target/cucumber-reports
