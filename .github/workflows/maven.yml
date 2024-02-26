@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Delay
-        run: sleep 60  # Delay for 20 minutes (20 minutes * 60 seconds = 1200 seconds)
+        run: sleep 30000  # Delay for 20 minutes (20 minutes * 60 seconds = 1200 seconds)
     
       - name: Checkout code
         uses: actions/checkout@v3
