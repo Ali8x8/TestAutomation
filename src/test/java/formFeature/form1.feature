@@ -1,4 +1,4 @@
-Feature: All Form Submission
+Feature: Validation test for stepper form
 
   @ValidationTest
   Scenario: Verify All the required message
@@ -14,7 +14,7 @@ Feature: All Form Submission
     And Verify email field with Blocked Domains like -@foxmail.com
     And Verify email field with Blocked Domains like -@qq.com
     And Navigate To Second Step for Navigation
-  ##########################
+  ##############################
     And Verify next button status of second steper for First Name Last Name and Phone Number
     And Verify Required messages for First Name Last Name and Phone Number
     And Verify single space and multiple space for First Name Last Name and Phone fields
