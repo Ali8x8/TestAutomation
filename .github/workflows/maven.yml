@@ -7,8 +7,11 @@ on:
   pull_request:
     branches:
       - TestAutomation
-#  schedule:
+  schedule:
+    - cron: '55 30 * * *'  # Schedule the workflow to run at 09:30 PM in Pakistani Standard Time (4:30 PM UTC) push
+
 #    - cron: '55 17 * * *'  # Schedule the workflow to run at 10:55 PM in Pakistani Standard Time (5:55 PM UTC) push
+
 
 jobs:
   test:
